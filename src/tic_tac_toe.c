@@ -3,7 +3,7 @@
 void print_board(char *brd)
 {
 	printf("\e[1;1H\e[2J");
-	printf("The TIC TAC TOE Tourniment\n\n");
+	printf("The TIC TAC TOE Tournament\n\n");
 	printf("  %c | %c | %c\n -----------\n  %c | %c | %c\n -----------\n  %c | %c | %c\n", brd[0], brd[1], brd[2], brd[3], brd[4], brd[5], brd[6], brd[7], brd[8]);
 }
 
@@ -59,7 +59,7 @@ int main(void)
 	while (i)
 	{
 		print_board(board);
-		printf("\nEnter a number (1 - 9): ");
+		printf("\nEnter a number %c (1 - 9): ", player);
 		scanf("%d", &input);
 		printf("\n");
 		input--;
