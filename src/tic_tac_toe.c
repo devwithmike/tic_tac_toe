@@ -55,25 +55,31 @@ int main(void)
 	int input;
 	char player = 'X';
 	int i = 1;
+	char buf[MAX];
 
 	while (i)
 	{
 		print_board(board);
 		printf("\nEnter a number %c (1 - 9): ", player);
-		scanf("%d", &input);
+		fgets(buf, MAX, stdin);
+		buf[1] = '\0';
 		printf("\n");
-		input--;
-		if (board[input] == '-')
-			board[input] = player;
-		else
-			continue;
-		i = checks(player, board);
-		if (i == 0)
+		input = atoi(buf);
+		if (input)
 		{
-			print_board(board);
-			printf("\n%c is the winner. Well done!!!\n", player);
-			break;
+			input--;
+			if (board[input] == '-')
+				board[input] = player;
+			else
+				continue;
+			i = checks(player, board);
+			if (i == 0)
+			{
+				print_board(board);
+				printf("\n%c is the winner. Well done!!!\n", player);
+				break;
+			}
+			player = (player == 'X') ? 'O' : 'X';
 		}
-		player = (player == 'X') ? 'O' : 'X';
 	}
 }
